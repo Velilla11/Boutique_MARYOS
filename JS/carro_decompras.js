@@ -62,24 +62,6 @@ class Carrito{
         this.guardarProductosLocalStorage(producto);
     }
 
-    eliminarProducto(e){
-        e.preventDefault();
-        let producto, productoID;
-        if(e.target.classList.contains('borrar-producto')){
-            e.target.parentElement.parentElement.remove();
-            producto = e.target.parentElement.parentElement;
-            productoID = producto.querySelector('a').getAttribute('data-id');
-            Swal.fire({
-                icon: 'info',
-                title: 'Eliminado',
-                timer: 2500,
-                showConfirmButton: false
-            })
-        }
-        this.eliminarProductoLocalStorage(productoID);
-        this.calcularTotal();        
-    }
-
     vaciarCarrito(e){
         e.preventDefault();
         while(listaProductos.firstChild){
@@ -180,7 +162,7 @@ class Carrito{
             })
         }
         else{
-            location.href="carro_de_compras.html";
+            location.href="/Boutique_MARYOS/carro_de_compras.html";
         }
     }
 
