@@ -26,20 +26,17 @@ function agregarRutaEnlaces() {
     });
 }
 
-function procesarCompra(e){
+function procesarCompra(e) {
     //e.preventDefault();
-    if(compra.obtenerProductosLocalStorage().length === 0){
+    if (compra.obtenerProductosLocalStorage().length === 0) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'No hay productos, selecciona alguno',
             timer: 2500,
             showConfirmButton: false
-        }).then(function(){
-            window.location = "productos.html";
         });
-    }
-    else if(cliente.value === '' || correo.value === ''){
+    } else if (cliente.value === '' || correo.value === '') {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -47,14 +44,19 @@ function procesarCompra(e){
             timer: 2500,
             showConfirmButton: false
         });
-    }
-    else{
+    } else {
         // Si se cumplen todas las condiciones, muestra el alert de éxito
-        alert('La compra se realizó con éxito');
-        
-        // Vaciar el LocalStorage y redirigir a la página de productos
-        compra.vaciarLocalStorage();
-        window.location = "productos.html";
+        Swal.fire({
+            icon: 'success',
+            title: 'Compra realizada',
+            text: 'La compra se realizó con éxito',
+            timer: 2500,
+            showConfirmButton: false
+        }).then(function() {
+            // Vaciar el LocalStorage después de mostrar el mensaje de éxito
+            compra.vaciarLocalStorage();
+            // Aquí puedes añadir cualquier otra lógica que necesites después de la compra
+        });
     }
 }
 
