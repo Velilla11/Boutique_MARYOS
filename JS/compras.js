@@ -8,10 +8,22 @@ const correo = document.getElementById('correo');
 cargarEventos();
 
 function cargarEventos(){
-    document.addEventListener('DOMContentLoaded', compra.leerLocalStorageCompra());
+    document.addEventListener('DOMContentLoaded', () => {
+        compra.leerLocalStorageCompra();
+        agregarRutaEnlaces();
+    });
     carrito2.addEventListener('click', (e)=>{compra.eliminarProducto(e)});
     compra.calcularTotal();
     procesarCompraBtn.addEventListener('click', procesarCompra);
+}
+
+function agregarRutaEnlaces() {
+    const enlaces = document.querySelectorAll('a');
+    enlaces.forEach(enlace => {
+        if (!enlace.href.includes('/Boutique_MARYOS/')) {
+            enlace.href = '/Boutique_MARYOS/' + enlace.getAttribute('href');
+        }
+    });
 }
 
 function procesarCompra(e){
