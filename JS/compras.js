@@ -36,7 +36,7 @@ procesarCompra(e){
             timer: 2500,
             showConfirmButton: false
         }).then(function(){
-            window.location = "productos.html";
+            window.location = "/Boutique_MARYOS/productos.html";
         });
     }
     else if(cliente.value === '' || correo.value === ''){
@@ -54,7 +54,7 @@ procesarCompra(e){
         
         // Vaciar el LocalStorage y redirigir a la página de productos
         compra.vaciarLocalStorage();
-        window.location = "productos.html";
+        window.location = "/Boutique_MARYOSproductos.html";
     }
 }
 
