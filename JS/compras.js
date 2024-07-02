@@ -8,25 +8,13 @@ const correo = document.getElementById('correo');
 cargarEventos();
 
 function cargarEventos(){
-    document.addEventListener('DOMContentLoaded', () => {
-        compra.leerLocalStorageCompra();
-        agregarRutaEnlaces();
-    });
+    document.addEventListener('DOMContentLoaded', compra.leerLocalStorageCompra());
     carrito2.addEventListener('click', (e)=>{compra.eliminarProducto(e)});
     compra.calcularTotal();
     procesarCompraBtn.addEventListener('click', procesarCompra);
 }
 
-function agregarRutaEnlaces() {
-    const enlaces = document.querySelectorAll('a');
-    enlaces.forEach(enlace => {
-        if (!enlace.href.includes('/Boutique_MARYOS/')) {
-            enlace.href = '/Boutique_MARYOS/' + enlace.getAttribute('href');
-        }
-    });
-}
-
-procesarCompra(e){
+function procesarCompra(e){
     //e.preventDefault();
     if(compra.obtenerProductosLocalStorage().length === 0){
         Swal.fire({
@@ -36,7 +24,7 @@ procesarCompra(e){
             timer: 2500,
             showConfirmButton: false
         }).then(function(){
-            window.location = "/Boutique_MARYOS/productos.html";
+            window.location = "/Boutique_MARYOSproductos.html";
         });
     }
     else if(cliente.value === '' || correo.value === ''){
@@ -54,9 +42,10 @@ procesarCompra(e){
         
         // Vaciar el LocalStorage y redirigir a la página de productos
         compra.vaciarLocalStorage();
-        window.location = "/Boutique_MARYOSproductos.html";
+        window.location = "/Boutique_MARYOS/productos.html";
     }
 }
 
 // Asigna el evento al botón de procesar compra
 document.getElementById('procesar-compra').addEventListener('click', procesarCompra);
+
